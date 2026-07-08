@@ -1,0 +1,10 @@
+file_format: "1"
+id: nightjar34
+name: nightjar34
+type: shield
+url: https://github.com/rejyr/nightjar34
+requires: [seeed_xiao]
+features: [keys]
+siblings:
+  - nightjar34_left
+  - nightjar34_right

@@ -1,3 +1,4 @@
+name: zmk-keyboard-nightjar34
 build:
   settings:
     board_root: .

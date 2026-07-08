@@ -1,0 +1,19 @@
+# Copyright (c) 2026 Jerry Wang
+# SPDX-License-Identifier: MIT
+
+if SHIELD_NIGHTJAR34_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "nightjar34"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_NIGHTJAR34_LEFT || SHIELD_NIGHTJAR34_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif
