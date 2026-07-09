@@ -91,6 +91,17 @@ ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE)
 MASK_MODS(masked_home, (MOD_LCTL), &kp HOME)
 MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
 
+/* magic strdy magic key */
+#define MAGIC_KEY(NAME, KEY, BINDING) \
+  NAME { trigger-keys = <KEY>; bindings = <BINDING>; }
+#define MAGIC_MACRO(NAME, BINDINGS) \
+  ZMK_MACRO(NAME, wait-ms = <40>; tap-ms = <40>; bindings = BINDINGS;)
+MAGIC_MACRO(macro_efore, <&kp E &kp F &kp O &kp R &kp E>)
+ZMK_ADAPTIVE_KEY(magic, bindings = <XXX>;
+                 MAGIC_KEY(a, A, &kp O);
+                 MAGIC_KEY(b, B, &macro_efore);
+                 )
+
 /* Magic-shift & auto-layers */
 
 // Tap: repeat after alpha, else sticky-shift |
@@ -191,7 +202,7 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS) // FN + NUM --> SYS.
 
 ZMK_BASE_LAYER(Base,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp V         &kp M         &kp L         &kp C         &kp P       ,   &kp Z         &bt BT_CLR    &kp U         &kp O         &kp Q       ,
+    &kp V         &kp M         &kp L         &kp C         &kp P       ,   &kp Z         &magic        &kp U         &kp O         &kp Q       ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &hml LGUI S   &hml LALT T   &hml LSHFT R  &hml LCTRL D  &kp Y       ,   &kp F         &hmr LCTRL N  &hmr LSHFT E  &hmr LALT A   &hmr LGUI I ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
