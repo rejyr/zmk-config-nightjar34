@@ -1,14 +1,52 @@
 manifest:
   defaults:
-    revision: v0.3
+    # revision: v0.3
+    remote: urob
+    revision: main
   remotes:
+    - name: urob
+      url-base: https://github.com/urob
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    # Additional modules containing boards/shields/custom code can be listed here as well
-    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
+
+    # ZMK modules
+    - name: zmk-adaptive-key
+      path: modules/zmk/adaptive-key
+      revision: e5b335a7b1076cb122582f5a892b118b02a3be34 # main (7/09/2026)
+    - name: zmk-auto-layer
+      path: modules/zmk/auto-layer
+      revision: 62c201934711369d50a28df12e1d055d05cb6460 # main (7/09/2026)
+    - name: zmk-helpers
+      path: modules/zmk/helpers
+      revision: bc114546392b4615ac90a99140eaf21dde31209d # main (7/09/2026)
+    - name: zmk-leader-key
+      path: modules/zmk/leader-key
+      revision: e894d9afa5164b7fff641db4194fc3d4d6e84bbb # main (7/09/2026)
+    - name: zmk-tri-state
+      path: modules/zmk/tri-state
+      revision: 2007896c6d5bfb519e8babccf8633841c5647d8b # main (7/09/2026)
+    - name: zmk-unicode
+      path: modules/zmk/unicode
+      revision: 1a6dbc797a46c4a61c3c71a7a9d013a5d5aee49e # main (7/09/2026)
+
+    # Only source necessary Zephyr modules. Remove this entire section to restore
+    # the default (needed for less common hardware).
+    # - name: zephyr
+    #   remote: zmkfirmware
+      # revision: 58a5874a446ace2893a196848282d271a551e512 # v4.1.0+zmk-fixes
+    #   clone-depth: 1
+    #   import:
+    #     name-allowlist:
+    #       - cmsis
+    #       - hal_nordic
+    #       - hal_rpi_pico
+    #       - hal_stm32
+    #       - mbedtls
+    #       - tinycrypt
+
   self:
     path: config
