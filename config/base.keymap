@@ -109,36 +109,36 @@ MAGIC_MACRO(macro_es, <&kp E &kp S>)
 MAGIC_MACRO(macro__but, <&kp SPACE &kp B &kp U &kp T>)
 MAGIC_MACRO(macro_the, <&kp T &kp H &kp E>)
 ZMK_ADAPTIVE_KEY(magic, bindings = <XXX>;
-                 MAGIC_KEY(a, A, &kp O);
-                 MAGIC_KEY(b, B, &macro_le);
-                 MAGIC_KEY(c, C, &kp K);
-                 MAGIC_KEY(d, D, &kp G);
-                 MAGIC_KEY(e, E, &kp U);
-                 MAGIC_KEY(f, F, &kp N);
-                 MAGIC_KEY(g, G, &kp Y);
-                 MAGIC_KEY(h, H, XXX);
-                 MAGIC_KEY(i, I, &macro_on);
-                 MAGIC_KEY(j, J, &macro_ust);
-                 MAGIC_KEY(k, K, &kp S);
-                 MAGIC_KEY(l, L, &kp K);
-                 MAGIC_KEY(m, M, &macro_ent);
-                 MAGIC_KEY(n, N, &macro_ion);
-                 MAGIC_KEY(o, O, &kp A);
-                 MAGIC_KEY(p, P, &kp Y);
-                 MAGIC_KEY(q, Q, &macro_uen);
-                 MAGIC_KEY(r, R, &kp L);
-                 MAGIC_KEY(s, S, &kp K);
-                 MAGIC_KEY(t, T, &macro_ment);
-                 MAGIC_KEY(u, U, &kp E);
-                 MAGIC_KEY(v, V, &macro_er);
-                 MAGIC_KEY(w, W, &kp Y);
-                 MAGIC_KEY(x, X, &macro_es);
-                 MAGIC_KEY(y, Y, &kp W);
-                 MAGIC_KEY(z, Z, XXX);
-                 MAGIC_KEY(comma, COMMA, &macro__but);
-                 MAGIC_KEY(period, PERIOD, &kp SLASH);
+                 MAGIC_KEY(ao, A, &kp O);
+                 MAGIC_KEY(ble, B, &macro_le);
+                 MAGIC_KEY(ck, C, &kp K);
+                 MAGIC_KEY(dg, D, &kp G);
+                 MAGIC_KEY(eu, E, &kp U);
+                 MAGIC_KEY(fn, F, &kp N);
+                 MAGIC_KEY(gy, G, &kp Y);
+                 MAGIC_KEY(hXXX, H, XXX);
+                 MAGIC_KEY(ion, I, &macro_on);
+                 MAGIC_KEY(just, J, &macro_ust);
+                 MAGIC_KEY(ks, K, &kp S);
+                 MAGIC_KEY(lk, L, &kp K);
+                 MAGIC_KEY(ment, M, &macro_ent);
+                 MAGIC_KEY(nion, N, &macro_ion);
+                 MAGIC_KEY(oa, O, &kp A);
+                 MAGIC_KEY(py, P, &kp Y);
+                 MAGIC_KEY(quen, Q, &macro_uen);
+                 MAGIC_KEY(rl, R, &kp L);
+                 MAGIC_KEY(sk, S, &kp K);
+                 MAGIC_KEY(tment, T, &macro_ment);
+                 MAGIC_KEY(ue, U, &kp E);
+                 MAGIC_KEY(ver, V, &macro_er);
+                 MAGIC_KEY(wy, W, &kp Y);
+                 MAGIC_KEY(xes, X, &macro_es);
+                 MAGIC_KEY(yp, Y, &kp P);
+                 MAGIC_KEY(zXXX, Z, XXX);
+                 MAGIC_KEY(comma_but, COMMA, &macro__but);
+                 MAGIC_KEY(period_slash, PERIOD, &kp SLASH);
                  MAGIC_KEY(arrow, MINUS EQUAL, &kp GT);
-                 MAGIC_KEY(wspc, WSPC, &macro_the);
+                 MAGIC_KEY(wspc_the, WSPC, &macro_the);
                  )
 
 /* Magic-shift & auto-layers */
@@ -151,14 +151,27 @@ ZMK_HOLD_TAP(magic_shift, bindings = <&kp>, <&magic_shift_tap>;
              quick-tap-ms = <QUICK_TAP_MS>;)
 ZMK_MOD_MORPH(magic_shift_tap, bindings = <&shift_repeat>, <&caps_word>;
               mods = <(MOD_LSFT)>;)
+#define ALTREPEAT_KEY(NAME, KEY, BINDING) \
+  NAME { trigger-keys = <KEY>; bindings = <BINDING>; \
+      max-prior-idle-ms = <1200>; strict-modifiers; }
+MAGIC_MACRO(macro_nd, <&kp N &kp D>)
+MAGIC_MACRO(macro_ng, <&kp N &kp G>)
+MAGIC_MACRO(macro_ou, <&kp O &kp U>)
+MAGIC_MACRO(macro_ecause, <&kp E &kp C &kp A &kp U &kp S &kp E>)
+MAGIC_MACRO(macro_ould, <&kp O &kp U &kp L &kp D>)
+MAGIC_MACRO(macro__and, <&kp SPACE &kp A &kp N &kp D>)
+MAGIC_MACRO(macro_for, <&kp F &kp O &kp R>)
 ZMK_ADAPTIVE_KEY(
     shift_repeat, bindings = <&sk LSHFT>;
-    repeat {
-      trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
-      bindings = <&key_repeat>;
-      max-prior-idle-ms = <1200>;
-      strict-modifiers;
-    };)
+    ALTREPEAT_KEY(and, A, &macro_nd);
+    ALTREPEAT_KEY(ing, I, &macro_ng);
+    ALTREPEAT_KEY(you, Y, &macro_ou);
+    ALTREPEAT_KEY(because, B, &macro_ecause);
+    ALTREPEAT_KEY(would, W, &macro_ould);
+    ALTREPEAT_KEY(_and, COMMA, &macro__and);
+    ALTREPEAT_KEY(wpsc, WSPC, &macro_for);
+    ALTREPEAT_KEY(repeat, A B C D E F G H I J K L M N O P Q R S T U V W X Y Z, &key_repeat);
+    )
 &caps_word { // Mods deactivate caps-word, requires PR #1451. [TODO: rebase]
   /delete-property/ ignore-modifiers;
 };
