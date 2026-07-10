@@ -92,14 +92,53 @@ MASK_MODS(masked_home, (MOD_LCTL), &kp HOME)
 MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
 
 /* magic strdy magic key */
+#define WSPC SPACE RET BSPC DEL INS LPAR SQT
 #define MAGIC_KEY(NAME, KEY, BINDING) \
   NAME { trigger-keys = <KEY>; bindings = <BINDING>; }
 #define MAGIC_MACRO(NAME, BINDINGS) \
-  ZMK_MACRO(NAME, wait-ms = <40>; tap-ms = <40>; bindings = BINDINGS;)
-MAGIC_MACRO(macro_efore, <&kp E &kp F &kp O &kp R &kp E>)
+  ZMK_MACRO(NAME, wait-ms = <10>; tap-ms = <10>; bindings = BINDINGS;)
+MAGIC_MACRO(macro_le, <&kp L &kp E>)
+MAGIC_MACRO(macro_on, <&kp O &kp N>)
+MAGIC_MACRO(macro_ust, <&kp U &kp S &kp T>)
+MAGIC_MACRO(macro_ent, <&kp E &kp N &kp T>)
+MAGIC_MACRO(macro_ion, <&kp I &kp O &kp N>)
+MAGIC_MACRO(macro_uen, <&kp U &kp E &kp N>)
+MAGIC_MACRO(macro_ment, <&kp M &kp E &kp N &kp T>)
+MAGIC_MACRO(macro_er, <&kp E &kp R>)
+MAGIC_MACRO(macro_es, <&kp E &kp S>)
+MAGIC_MACRO(macro__but, <&kp SPACE &kp B &kp U &kp T>)
+MAGIC_MACRO(macro_the, <&kp T &kp H &kp E>)
 ZMK_ADAPTIVE_KEY(magic, bindings = <XXX>;
                  MAGIC_KEY(a, A, &kp O);
-                 MAGIC_KEY(b, B, &macro_efore);
+                 MAGIC_KEY(b, B, &macro_le);
+                 MAGIC_KEY(c, C, &kp K);
+                 MAGIC_KEY(d, D, &kp G);
+                 MAGIC_KEY(e, E, &kp U);
+                 MAGIC_KEY(f, F, &kp N);
+                 MAGIC_KEY(g, G, &kp Y);
+                 MAGIC_KEY(h, H, XXX);
+                 MAGIC_KEY(i, I, &macro_on);
+                 MAGIC_KEY(j, J, &macro_ust);
+                 MAGIC_KEY(k, K, &kp S);
+                 MAGIC_KEY(l, L, &kp K);
+                 MAGIC_KEY(m, M, &macro_ent);
+                 MAGIC_KEY(n, N, &macro_ion);
+                 MAGIC_KEY(o, O, &kp A);
+                 MAGIC_KEY(p, P, &kp Y);
+                 MAGIC_KEY(q, Q, &macro_uen);
+                 MAGIC_KEY(r, R, &kp L);
+                 MAGIC_KEY(s, S, &kp K);
+                 MAGIC_KEY(t, T, &macro_ment);
+                 MAGIC_KEY(u, U, &kp E);
+                 MAGIC_KEY(v, V, &macro_er);
+                 MAGIC_KEY(w, W, &kp Y);
+                 MAGIC_KEY(x, X, &macro_es);
+                 MAGIC_KEY(y, Y, &kp W);
+                 MAGIC_KEY(z, Z, XXX);
+                 MAGIC_KEY(comma, COMMA, &macro__but);
+                 MAGIC_KEY(period, PERIOD, &kp SLASH);
+                 MAGIC_KEY(arrow, MINUS EQUAL, &kp GT);
+                 MAGIC_KEY(wspc, WSPC, &macro_the);
                  )
 
 /* Magic-shift & auto-layers */
